@@ -1,0 +1,54 @@
+.fixedHeightButton {
+    height: 50px;
+}
+
+.fixedHeightDate{
+    height: 35px;
+}
+
+.fixedHeightButton2 {
+    height: 46px;
+}
+
+.fixedWidthButton{
+    width: 50%;
+}
+
+.fixedWidthForm{
+    width: 33vw;
+}
+
+#message{
+    height: 35px;
+}
+
+#titolo{
+    font-family: “Helvetica Neue”, Helvetica, Arial, sans-serif;
+    color: red;
+}
+
+.card{
+    max-width: 325px;  
+    height: 700px;
+    box-shadow: 10px 10px 5px #DEDEDE;  
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+.card img{
+    height: 250px;
+}
+
+#username{
+    text-align: center;
+    font-size: 35px;
+}
+
+
+#warning{
+    text-align: center;
+}
+
+
+
+

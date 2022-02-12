@@ -1,0 +1,9 @@
+.form-control::placeholder { 
+    color: gray;
+    opacity: 1; 
+    font-weight: lighter;
+}
+
+.wrapper{
+    max-width: 400px;
+}

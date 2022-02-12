@@ -1,0 +1,701 @@
+swagger: "2.0"
+info:
+  description: API from Web Technology project 'Nolo Nolo+'
+  version: 1.0.0
+  title: NoloNolo+APIs
+  termsOfService: http://swagger.io/terms/
+  contact:
+    email: josephcarrino2203@gmail.com
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+host: api.server.test
+schemes:
+- https
+- http
+paths:
+  /users:
+    get:
+      tags:
+      - Users
+      summary: Get a list of all users
+      operationId: getAllUsers
+      parameters: []
+      responses:
+        "200":
+          description: Succesful Operation
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/User'
+        "400":
+          description: Server Error
+    post:
+      tags:
+      - Users
+      summary: Add a new user (ID given server-side)
+      operationId: createUser
+      parameters:
+      - in: body
+        name: UserObj
+        required: true
+        schema: {}
+      responses:
+        "200":
+          description: Operation Successful
+  /users/{id}:
+    get:
+      tags:
+      - Users
+      summary: Get the user with the specified id
+      operationId: getUserByID
+      parameters:
+      - name: id
+        in: path
+        required: true
+        type: string
+      responses:
+        "200":
+          description: Successful Operation
+          schema: {}
+        "400":
+          description: Invalid ID
+        "404":
+          description: ID not found
+    post:
+      tags:
+      - Users
+      summary: Modify a user informations
+      operationId: modUser
+      parameters:
+      - name: id
+        in: path
+        required: true
+        type: string
+      - in: body
+        name: UserObj
+        required: true
+        schema: {}
+      responses:
+        "200":
+          description: Successful Operation
+        "400":
+          description: Invalid ID
+        "404":
+          description: ID not found
+    delete:
+      tags:
+      - Users
+      summary: Delete the user with the id specified
+      operationId: deleteUserByID
+      parameters:
+      - name: id
+        in: path
+        required: true
+        type: string
+      responses:
+        "200":
+          description: Successful Operation
+        "400":
+          description: Invalid ID
+        "404":
+          description: ID not found
+  /users/{id}/rentals:
+    get:
+      tags:
+      - Users
+      summary: Get the rentals of the user with the specified id
+      operationId: getAllRentalOfUserByID
+      parameters:
+      - name: id
+        in: path
+        required: true
+        type: string
+      responses:
+        "200":
+          description: Successful Operation
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Rental'
+        "400":
+          description: Invalid ID
+        "404":
+          description: ID not found
+  /articles:
+    get:
+      tags:
+      - Articles
+      summary: Get a list of all articles
+      operationId: getAllArticles
+      parameters: []
+      responses:
+        "200":
+          description: Succesful Operation
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Article'
+        "400":
+          description: Server Error
+    post:
+      tags:
+      - Articles
+      summary: Add a new article (ID given server-side)
+      operationId: createArticle
+      parameters:
+      - in: body
+        name: ArticleObj
+        required: true
+        schema: {}
+      responses:
+        "200":
+          description: Operation Successful
+  /articles/{id}/:
+    get:
+      tags:
+      - Articles
+      summary: Get the Articles with the specified id
+      operationId: getArticleByID
+      parameters:
+      - name: id
+        in: path
+        required: true
+        type: string
+      responses:
+        "200":
+          description: Successful Operation
+          schema: {}
+        "400":
+          description: Invalid ID
+        "404":
+          description: ID not found
+    post:
+      tags:
+      - Articles
+      summary: Modify an article informations
+      operationId: modArticle
+      parameters:
+      - name: id
+        in: path
+        required: true
+        type: string
+      - in: body
+        name: ArticleObj
+        required: true
+        schema: {}
+      responses:
+        "200":
+          description: Successful Operation
+        "400":
+          description: Invalid ID
+        "404":
+          description: ID not found
+    delete:
+      tags:
+      - Articles
+      summary: Delete the article with the specified id
+      operationId: deleteArticleByID
+      parameters:
+      - name: id
+        in: path
+        required: true
+        type: string
+      responses:
+        "200":
+          description: Successful Operation
+        "400":
+          description: Invalid ID
+        "404":
+          description: ID not found
+  /articles/{id}/rentals:
+    get:
+      tags:
+      - Articles
+      summary: Get the rentals of the article with the specified id
+      operationId: getAllRentalOfArticleByID
+      parameters:
+      - name: id
+        in: path
+        required: true
+        type: string
+      responses:
+        "200":
+          description: Successful Operation
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Rental'
+        "400":
+          description: Invalid ID
+        "404":
+          description: ID not found
+  /staff:
+    get:
+      tags:
+      - Staff
+      summary: Get a list of all Employees
+      operationId: getAllEmployees
+      parameters: []
+      responses:
+        "200":
+          description: Succesful Operation
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Employee'
+        "400":
+          description: Server Error
+    post:
+      tags:
+      - Staff
+      summary: Add a new staff member (ID given server-side)
+      operationId: createStaff
+      parameters:
+      - in: body
+        name: StaffObj
+        required: true
+        schema: {}
+      responses:
+        "200":
+          description: Operation Successful
+  /staff/{id}:
+    get:
+      tags:
+      - Staff
+      summary: Get the staff member with the specified id
+      operationId: getStaffByID
+      parameters:
+      - name: id
+        in: path
+        required: true
+        type: string
+      responses:
+        "200":
+          description: Successful Operation
+          schema: {}
+        "400":
+          description: Invalid ID
+        "404":
+          description: ID not found
+    post:
+      tags:
+      - Staff
+      summary: Modify an employee informations
+      operationId: modStaff
+      parameters:
+      - name: id
+        in: path
+        required: true
+        type: string
+      - in: body
+        name: StaffObj
+        required: true
+        schema: {}
+      responses:
+        "200":
+          description: Successful Operation
+        "400":
+          description: Invalid ID
+        "404":
+          description: ID not found
+    delete:
+      tags:
+      - Staff
+      summary: Delete the employee with the specified id
+      operationId: deleteStaffByID
+      parameters:
+      - name: id
+        in: path
+        required: true
+        type: string
+      responses:
+        "200":
+          description: Successful Operation
+        "400":
+          description: Invalid ID
+        "404":
+          description: ID not found
+  /staff/{id}/rentals:
+    get:
+      tags:
+      - Staff
+      summary: Get the rentals of the employee with the specified id
+      operationId: getAllRentalOfEmployeeByID
+      parameters:
+      - name: id
+        in: path
+        required: true
+        type: string
+      responses:
+        "200":
+          description: Successful Operation
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Rental'
+        "400":
+          description: Invalid ID
+        "404":
+          description: ID not found
+  /payments:
+    get:
+      tags:
+      - PaymentMethod
+      summary: Get a list of all payment methods
+      operationId: getAllPayments
+      parameters: []
+      responses:
+        "200":
+          description: Succesful Operation
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/PaymentMethod'
+        "400":
+          description: Server Error
+  /rentals:
+    get:
+      tags:
+      - Rentals
+      summary: Get a list of all rentals
+      operationId: getAllRentals
+      parameters: []
+      responses:
+        "200":
+          description: Succesful Operation
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Rental'
+        "400":
+          description: Server Error
+    post:
+      tags:
+      - Rentals
+      summary: Add a new rental (ID given server-side)
+      operationId: createRental
+      parameters:
+      - in: body
+        name: RentalObj
+        required: true
+        schema: {}
+      responses:
+        "200":
+          description: Operation Successful
+  /rentals/{id}:
+    get:
+      tags:
+      - Rentals
+      summary: Get a rental (ID given server-)
+      operationId: getRentalByID
+      parameters:
+      - name: id
+        in: path
+        required: true
+        type: string
+      responses:
+        "200":
+          description: Operation Successful
+          schema: {}
+        "400":
+          description: Invalid ID
+        "404":
+          description: ID not found
+    post:
+      tags:
+      - Rentals
+      summary: Modify a rental
+      operationId: modRentalByID
+      parameters:
+      - name: id
+        in: path
+        required: true
+        type: string
+      - in: body
+        name: rentalObj
+        required: true
+        schema: {}
+      responses:
+        "200":
+          description: Operation Successful
+        "400":
+          description: Invalid ID
+        "404":
+          description: ID not found
+    delete:
+      tags:
+      - Rentals
+      summary: Delete the rental with the specified id
+      operationId: deleteRentalByID
+      parameters:
+      - name: id
+        in: path
+        required: true
+        type: string
+      responses:
+        "200":
+          description: Successful Operation
+        "400":
+          description: Invalid ID
+        "404":
+          description: ID not found
+  /category:
+    get:
+      tags:
+      - Categories
+      summary: Get a list of all categories
+      operationId: getAllCategories
+      parameters: []
+      responses:
+        "200":
+          description: Succesful Operation
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Category'
+        "400":
+          description: Server Error
+    post:
+      tags:
+      - Categories
+      summary: Crete a new Category
+      operationId: addCategory
+      parameters:
+      - in: body
+        name: categoryObj
+        required: true
+        schema: {}
+      responses:
+        "200":
+          description: Succesful Operation
+        "400":
+          description: Server Error
+  /category/{id}:
+    delete:
+      tags:
+      - Categories
+      summary: Delete the category with the specified id
+      operationId: deleteCategoryByID
+      parameters:
+      - name: id
+        in: path
+        required: true
+        type: string
+      responses:
+        "200":
+          description: Successful Operation
+        "400":
+          description: Invalid ID
+        "404":
+          description: ID not found
+  /categories/{id}/rentals:
+    get:
+      tags:
+      - Categories
+      summary: Get the rentals of the category with the specified id
+      operationId: getCatgoryRentals
+      parameters:
+      - name: id
+        in: path
+        required: true
+        type: string
+      responses:
+        "200":
+          description: Successful Operation
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Rental'
+        "400":
+          description: Invalid ID
+        "404":
+          description: ID not found
+  /auth/login/customers:
+    post:
+      tags:
+      - Auth
+      summary: Lets a customer login
+      operationId: customerLogin
+      parameters:
+      - in: body
+        name: categoryObj
+        required: true
+        schema: {}
+      responses:
+        "200":
+          description: Succesful Operation
+        "400":
+          description: Wrong Username/password
+        "401":
+          description: User not found, Please login
+  /auth/login/staff:
+    post:
+      tags:
+      - Auth
+      summary: Lets an employee login
+      operationId: staffLogin
+      parameters:
+      - in: body
+        name: categoryObj
+        required: true
+        schema: {}
+      responses:
+        "200":
+          description: Succesful Operation
+        "400":
+          description: Wrong Username/Password
+        "404":
+          description: Customer not found, Please login
+definitions:
+  User:
+    type: object
+    required:
+    - id
+    - name
+    - paymentmethod
+    - residence
+    - surname
+    - username
+    properties:
+      id:
+        type: string
+        example: 614dc8a650f8cab4eb8c8c12
+      name:
+        type: string
+        example: Mario
+      surname:
+        type: string
+        example: Rossi
+      username:
+        type: string
+        example: mariorossi1
+      paymentmethod:
+        $ref: '#/definitions/PaymentMethod/properties/name'
+      residence:
+        type: string
+        example: Bologna
+      preferences:
+        type: array
+        items:
+          $ref: '#/definitions/Article/properties/name'
+  Employee:
+    type: object
+    required:
+    - id
+    - name
+    - role
+    - surname
+    - username
+    - password
+    properties:
+      id:
+        type: string
+        example: 614dc8a650f8cab4eb8c8c12
+      name:
+        type: string
+        example: Mario
+      surname:
+        type: string
+        example: Rossi
+      username:
+        type: string
+        example: mariorossi1
+      role:
+        type: string
+        enum:
+        - Manager
+        - Functionary
+      password:
+        type: string
+        example: 614dc8a650f8cab4eb8c8c12
+  PaymentMethod:
+    type: object
+    required:
+    - id
+    - name
+    properties:
+      id:
+        type: string
+        example: 614dc8a650f8cab4eb8c8c12
+      name:
+        type: string
+        example: PayPal
+  Article:
+    type: object
+    required:
+    - category
+    - id
+    - name
+    - state
+    properties:
+      id:
+        type: string
+        example: 614dc8a650f8cab4eb8c8c12
+      name:
+        type: string
+        example: Spada di legno
+      category:
+        $ref: '#/definitions/Category/properties/name'
+      state:
+        type: string
+        example: Good
+  Rental:
+    type: object
+    required:
+    - date_end
+    - date_start
+    - estimated
+    - functionary
+    - id
+    - object_id
+    - state
+    - user
+    properties:
+      id:
+        type: string
+        example: 614dc8a650f8cab4eb8c8c12
+      user:
+        $ref: '#/definitions/User/properties/username'
+      functionary:
+        $ref: '#/definitions/Employee/properties/username'
+      object_id:
+        $ref: '#/definitions/Article/properties/id'
+      date_start:
+        type: string
+        format: yyyy-mm-dd
+        example: 2021-11-14
+      date_end:
+        type: string
+        format: yyyy-mm-dd
+        example: 2021-11-18
+      estimated:
+        type: number
+        example: 20.67
+      state:
+        type: string
+        example: Pending
+  Category:
+    type: object
+    required:
+    - id
+    - name
+    properties:
+      id:
+        type: string
+        example: 614dc8a650f8cab4eb8c8c12
+      name:
+        type: string
+        example: Spada
+  AuthFormat:
+    type: object
+    required:
+    - password
+    - username
+    properties:
+      username:
+        type: string
+        example: mariorossi1
+      password:
+        type: string
+        example: 614dc8a650f8cab4eb8c8c12
